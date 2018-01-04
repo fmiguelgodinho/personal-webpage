@@ -3,7 +3,7 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 
-app.set('port', 8080);
+app.set('port', 3000);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -22,6 +22,6 @@ app.use("/",router);
   res.sendFile(__dirname + "404.html");
 });*/
 
-app.listen(8080,function(){
+app.listen(3000,function(){
   console.log("Live at Port 3000");
 });
