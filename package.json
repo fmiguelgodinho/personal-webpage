@@ -1,0 +1,14 @@
+{
+  "name": "fgodinho",
+  "version": "1.0.0",
+  "description": "Personal Web App",
+  "main": "index.js",
+  "author": "Francisco Godinho",
+  "license": "ISC",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "latest"
+  }
+}
