@@ -32,6 +32,12 @@ router.get("/",function(req,res){
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+router.get("/pgp",function(req,res) {
+  var filepath = path.join(__dirname, 'pgp.pub');
+  var content = fs.readFileSync(filepath, 'utf8');
+  res.send(content);
+});
+
 app.use("/",router);
 
 /*app.use("*",function(req,res){
