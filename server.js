@@ -4,6 +4,7 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 var fs = require('fs');
+var forceSSL = require('express-force-ssl');
 
 var key = fs.readFileSync('crt/fgodinho.key');
 var cert = fs.readFileSync( 'crt/fgodinho.crt' );
@@ -14,8 +15,13 @@ var options = {
   ca: ca
 };
 
+app.use(forceSSL);
 app.use(express.static(path.join(__dirname, 'public')));
 https.createServer(options, app).listen(443);
+
+var http = require('http');
+http.createServer(app).listen(80);
+
 
 router.use(function (req,res,next) {
   console.log("/" + req.method);
