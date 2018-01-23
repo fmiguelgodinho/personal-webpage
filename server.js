@@ -15,12 +15,12 @@ var options = {
   ca: ca
 };
 
-//app.use(forceSSL);
+app.use(forceSSL);
 app.use(express.static(path.join(__dirname, 'public')));
-//https.createServer(options, app).listen(4443);
+https.createServer(options, app).listen(443);
 
 var http = require('http');
-http.createServer(app).listen(3000);
+http.createServer(app).listen(80);
 
 
 router.use(function (req,res,next) {
@@ -38,11 +38,11 @@ router.get("/pgp",function(req,res) {
   res.send(content);
 });
 
+app.use("/",router);
+
 router.get("/travelmap",function(req,res){
   res.sendFile(path.join(__dirname, 'travelmap.html'));
 });
-
-app.use("/",router);
 
 app.use("*",function(req,res){
   res.sendFile(path.join(__dirname, '404.html'));
