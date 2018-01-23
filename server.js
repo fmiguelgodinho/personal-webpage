@@ -15,12 +15,12 @@ var options = {
   ca: ca
 };
 
-app.use(forceSSL);
+//app.use(forceSSL);
 app.use(express.static(path.join(__dirname, 'public')));
-https.createServer(options, app).listen(443);
+//https.createServer(options, app).listen(4443);
 
 var http = require('http');
-http.createServer(app).listen(80);
+http.createServer(app).listen(3000);
 
 
 router.use(function (req,res,next) {
@@ -36,6 +36,10 @@ router.get("/pgp",function(req,res) {
   var filepath = path.join(__dirname, 'pgp.pub');
   var content = fs.readFileSync(filepath, 'utf8');
   res.send(content);
+});
+
+router.get("/travelmap",function(req,res){
+  res.sendFile(path.join(__dirname, 'travelmap.html'));
 });
 
 app.use("/",router);

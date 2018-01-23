@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Travel Map</title>
+
+	<!-- vendor imports -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/a5e5384e97.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+	
+	<!-- custom imports -->
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+	<link rel="stylesheet" href="css/main.css">
+	
+	<style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+	<div id="map"></div>
+</body>
+<script>
+	var map = L.map('map').setView([45.476436, 9.182193], 5);
+	
+	L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+		subdomains: 'abcd',
+		maxZoom: 19
+	}).addTo(map);
+	
+	
+	L.marker([38.7223, -9.1393]).addTo(map).bindPopup('Lisboa');
+	L.marker([41.1579, -8.6291]).addTo(map).bindPopup('Porto');
+	
+	L.marker([37.3891, -5.9845]).addTo(map).bindPopup('Sevilla');
+	
+	L.marker([41.9028, 12.4964]).addTo(map).bindPopup('Roma');
+	L.marker([43.7696, 11.2558]).addTo(map).bindPopup('Firenze');
+	
+	var pointA = new L.LatLng(41.9028, 12.4964);
+	var pointB = new L.LatLng(43.7696, 11.2558);
+	var pointList = [pointA, pointB];
+
+	var firstpolyline = new L.Polyline(pointList, {
+		color: 'red',
+		weight: 3,
+		opacity: 0.5,
+		smoothFactor: 1
+	});
+	firstpolyline.addTo(map);
+	
+	L.marker([48.8049, 2.1204]).addTo(map).bindPopup('Versailles');
+	L.marker([48.8566, 2.3522]).addTo(map).bindPopup('Paris');
+	L.marker([50.8503, 4.3517]).addTo(map).bindPopup('Brussels');
+	
+	pointA = new L.LatLng(48.8049, 2.1204);
+	pointB = new L.LatLng(48.8566, 2.3522);
+	var pointC = new L.LatLng(50.8503, 4.3517);
+	pointList = [pointA, pointB, pointC];
+
+	var secondpolyline = new L.Polyline(pointList, {
+		color: 'red',
+		weight: 3,
+		opacity: 0.5,
+		smoothFactor: 1
+	});
+	secondpolyline.addTo(map);
+	
+	L.marker([41.3851, 2.1734]).addTo(map).bindPopup('Barcelona');
+	L.marker([45.4408, 12.3155]).addTo(map).bindPopup('Venezia');
+	L.marker([45.4642, 9.1900]).addTo(map).bindPopup('Milano');
+	L.marker([45.4384, 10.9916]).addTo(map).bindPopup('Verona');
+	
+	pointA = new L.LatLng(41.3851, 2.1734);
+	pointB = new L.LatLng(45.4408, 12.3155);
+	var pointC = new L.LatLng(45.4384, 10.9916);
+	var pointD = new L.LatLng(45.4642, 9.1900);
+	pointList = [pointA, pointB, pointC, pointD];
+
+	var thirdpolyline = new L.Polyline(pointList, {
+		color: 'red',
+		weight: 3,
+		opacity: 0.5,
+		smoothFactor: 1
+	});
+	thirdpolyline.addTo(map);
+	
+	L.marker([43.3438, 17.8078]).addTo(map).bindPopup('Mostar');
+	L.marker([45.8150, 15.9819]).addTo(map).bindPopup('Zagreb');
+	L.marker([44.8654, 15.5820]).addTo(map).bindPopup('Plitvice');
+	L.marker([42.6507, 18.0944]).addTo(map).bindPopup('Dubrovnik');
+	L.marker([43.5081, 16.4402]).addTo(map).bindPopup('Split');
+	L.marker([43.1588, 17.6075]).addTo(map).bindPopup('Kravice');
+	
+	pointA = new L.LatLng(45.8150, 15.9819);
+	pointB = new L.LatLng(44.8654, 15.5820);
+	pointC = new L.LatLng(43.5081, 16.4402);
+	pointD = new L.LatLng(42.6507, 18.0944);
+	var pointE = new L.LatLng(43.1588, 17.6075);
+	var pointF = new L.LatLng(43.3438, 17.8078);
+	pointList = [pointA, pointB, pointC, pointD, pointE, pointF];
+	
+	var fourthpolyline = new L.Polyline(pointList, {
+		color: 'red',
+		weight: 3,
+		opacity: 0.5,
+		smoothFactor: 1
+	});
+	fourthpolyline.addTo(map);
+	
+	L.marker([51.5074, -0.1278]).addTo(map).bindPopup('London');
+	L.marker([52.2053, 0.1218]).addTo(map).bindPopup('Cambridge');
+	
+	pointA = new L.LatLng(51.5074, -0.1278);
+	pointB = new L.LatLng(52.2053, 0.1218);
+	pointList = [pointA, pointB];
+	
+	var fifthpolyline = new L.Polyline(pointList, {
+		color: 'red',
+		weight: 3,
+		opacity: 0.5,
+		smoothFactor: 1
+	});
+	fifthpolyline.addTo(map);
+	
+	L.marker([55.9202, 21.0678]).addTo(map).bindPopup('Palanga');
+	L.marker([54.6872, 25.2797]).addTo(map).bindPopup('Vilnius');
+	
+	pointA = new L.LatLng(55.9202, 21.0678);
+	pointB = new L.LatLng(54.6872, 25.2797);
+	pointList = [pointA, pointB];
+	
+	var sixthpolyline = new L.Polyline(pointList, {
+		color: 'red',
+		weight: 3,
+		opacity: 0.5,
+		smoothFactor: 1
+	});
+	sixthpolyline.addTo(map);
+	
+	
+
+</script>
+</html>
